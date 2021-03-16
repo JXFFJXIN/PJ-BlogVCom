@@ -1,34 +1,45 @@
 'use strict';
 
-const Controller = require('egg').Controller;
+const { Controller } = require('egg');
 
-class BlogController extends Controller {
+module.exports = class extends Controller {
+  /**
+   * GET /b ?page=?&pageSize=?
+   * 获取数据
+   * queryBlogByPage.queryBlogHot.queryBlogCount,queryBlogAll
+   */
   async index() {
-    // GET /b 获取博客列表
-    const { ctx } = this;
-    const options = {
-      limit: 10,
-      offset: 0,
-    };
-    const req = await ctx.service.blogService.find(options);
-    console.log(req);
+    const { ctx } = this,
+      { page, pageSize } = ctx.query,
+      op = {
+        limit: parseInt(pageSize),
+        offset: (parseInt(page) - 1) * parseInt(pageSize),
+      },
+      { count, rows } = await ctx.service.blog.findBlog(op),
+      blogList = [];
+
+    rows.map(it => blogList.push(it.dataValues));
+    console.log(count, blogList);
   }
-  async new() {
-    // GET /b/new 获取添加博客的表单页面
-    this.ctx.body = '新增博客的表单';
-  }
+  /**
+   * GET /b/：id
+   * id查找数据
+   * queryBlogById，addview
+   */
   async show() {
     // GET /b/：id 获取某一篇博客
-    const { ctx } = this;
-    ctx.body = `获取第${ctx.params.id}篇的内容`;
+    const { ctx } = this,
+      { id } = ctx.params,
+      op = { id: parseInt(id) },
+      res = await ctx.service.blog.findBlogByPK(op);
+    console.log(res);
   }
-  async edit() {
-    // GET /b/：id/edit 获取某一篇博客的编辑界面
-    this.ctx.body = '博客编辑页面';
-  }
+  /**
+   * POST /b
+   * 添加数据
+   * addBlog
+   */
   async create() {
-    // POST /b 添加一篇博客
-    // title,content,view,tag
     const { ctx } = this;
     ctx.validate({
       title: { type: 'string', require: 'true' },
@@ -36,8 +47,29 @@ class BlogController extends Controller {
       tag: { type: 'string', require: 'true' },
     });
     const op = ctx.request.body;
-    const req = await ctx.service.blogService.add(op);
+    const req = await ctx.service.blog.addBlog(op);
     console.log(req);
+  }
+  /**
+   * GET /b/new
+   * 获得热度博客列表
+   */
+  async new() {
+    const { ctx } = this,
+      { page, pageSize } = ctx.query,
+      op = {
+        limit: parseInt(pageSize),
+        offset: (parseInt(page) - 1) * parseInt(pageSize),
+      },
+      { count, rows } = await ctx.service.blog.findBlogHot(op),
+      blogList = [];
+
+    rows.map(it => blogList.push(it.dataValues));
+    console.log(count, blogList);
+  }
+  async edit() {
+    // GET /b/：id/edit 获取某一篇博客的编辑界面
+    this.ctx.body = '博客编辑页面';
   }
   async update() {
     // PUT /b 修改一篇博客
@@ -47,6 +79,4 @@ class BlogController extends Controller {
     // DELETE /b/：id 删除一篇博客
     this.ctx.body = '删除博客';
   }
-}
-
-module.exports = BlogController;
+};
