@@ -14,8 +14,10 @@ module.exports = class extends Service {
     }
     const op = [];
     for (const item of tagIdArr) {
-      const res = { blogId };
-      res.tagId = +item;
+      const res = {
+        blogId,
+        tagId: +item,
+      };
       op.push(res);
     }
     const req = await app.model.MappingTagBlog.bulkCreate(op);

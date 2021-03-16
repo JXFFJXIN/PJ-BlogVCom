@@ -4,35 +4,21 @@ const { Controller } = require('egg');
 
 module.exports = class extends Controller {
   /**
-   * GET /cmt
-   * 获取所有数据
-   * queryCommentCount。queryCommentAll
-   */
-  async index() {
-    const { ctx } = this;
-    const options = {
-      limit: 10,
-      offset: 0,
-    };
-    const req = await ctx.service.blogService.find(options);
-    console.log(req);
-  }
-  /**
-   * GET /cmt/new
+   * GET /cmt/new ? page=X & pageSize=X
    * 获取验证码
    * queryRandomCade
    */
   async new() {
-    this.ctx.body = '新增博客的表单';
-  }
-  /**
-   * GET /cmt/:id
-   * id查找数据
-   * queryCommentByPage
-   */
-  async show() {
-    const { ctx } = this;
-    ctx.body = `获取第${ctx.params.id}篇的内容`;
+    const { ctx } = this,
+      { page = 1, pageSize = 10 } = ctx.request.query,
+      op = {
+        limit: parseInt(pageSize),
+        offset: (parseInt(page) - 1) * parseInt(pageSize),
+      },
+      { count, rows } = await ctx.service.comment.findCmtAll(op),
+      cmtList = [];
+    rows.map(it => cmtList.push(it.dataValues));
+    console.log(count, cmtList);
   }
   /**
    * POST /cmt
@@ -40,14 +26,16 @@ module.exports = class extends Controller {
    * addComment
    */
   async create() {
-    const { ctx } = this;
-    ctx.validate({
-      title: { type: 'string', require: 'true' },
-      content: { type: 'string', require: 'true' },
-      tag: { type: 'string', require: 'true' },
-    });
-    const op = ctx.request.body;
-    const req = await ctx.service.blogService.add(op);
+    const { ctx } = this,
+      { blogId, userName, comment, userEmail = '未留下联系方式', parentId = -1 } = ctx.request.body,
+      op = {
+        blogId: parseInt(blogId),
+        userName,
+        comment,
+        userEmail,
+        parentId: parseInt(parentId),
+      },
+      req = await ctx.service.comment.addCmt(op);
     console.log(req);
   }
   // 修改博客页面

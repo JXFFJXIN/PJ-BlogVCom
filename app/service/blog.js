@@ -38,9 +38,18 @@ module.exports = class extends Service {
    */
   async findBlogByPK({ id }) {
     const { app } = this,
-      req = await app.model.Blog.findByPk(id),
-      inc = await req.increment('view'),
-      { dataValues } = await inc.reload();
+      op = {
+        where: {
+          id: parseInt(id),
+        },
+        include: {
+          model: app.model.Comment,
+        },
+        order: [[ 'comments', 'id', 'DESC' ]],
+      },
+      req = await app.model.Blog.findByPk(id);
+    await req.increment('view');
+    const [{ dataValues }] = await app.model.Blog.findAll(op);
     return dataValues;
   }
   /**

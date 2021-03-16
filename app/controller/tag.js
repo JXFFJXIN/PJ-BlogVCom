@@ -9,13 +9,16 @@ module.exports = class extends Controller {
    * queryRandomTags
    */
   async index() {
-    const { ctx } = this;
-    const options = {
-      limit: 10,
-      offset: 0,
-    };
-    const req = await ctx.service.blogService.find(options);
-    console.log(req);
+    const { ctx } = this,
+      { page = 1, pageSize = 10 } = ctx.query,
+      op = {
+        limit: parseInt(pageSize),
+        offset: (parseInt(page) - 1) * parseInt(pageSize),
+      },
+      { rows, count } = await ctx.service.tag.findTagAll(op),
+      tagList = [];
+    rows.map(({ dataValues }) => tagList.push(dataValues));
+    console.log(tagList, count);
   }
   /**
    * GET /tag/:id
@@ -23,24 +26,12 @@ module.exports = class extends Controller {
    * queryByTag,queryCountByTag
    */
   async show() {
-    const { ctx } = this;
-    ctx.body = `获取第${ctx.params.id}篇的内容`;
-  }
-  /**
-   * POST /tag
-   * 添加数据
-   */
-  async create() {
-    // POST /b 添加一篇博客
-    // title,content,view,tag
-    const { ctx } = this;
-    ctx.validate({
-      title: { type: 'string', require: 'true' },
-      content: { type: 'string', require: 'true' },
-      tag: { type: 'string', require: 'true' },
-    });
-    const op = ctx.request.body;
-    const req = await ctx.service.blogService.add(op);
+    const { ctx } = this,
+      { id } = ctx.params,
+      op = {
+        id: parseInt(id),
+      },
+      req = await ctx.service.tag.findTagById(op);
     console.log(req);
   }
 };

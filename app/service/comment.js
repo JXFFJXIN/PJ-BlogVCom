@@ -1,6 +1,8 @@
 'use strict';
 
-const { Service } = require('egg');
+const {
+  Service,
+} = require('egg');
 
 module.exports = class extends Service {
   /**
@@ -8,35 +10,42 @@ module.exports = class extends Service {
    * @param {obj} param0 输入的内容
    * { blogId, parentId = -1, userName, comment, userEmail }
    */
-  async addCmt({ blogId, parentId = -1, userName, comment, userEmail }) {
-    const { app } = this,
+  async addCmt({
+    blogId,
+    parentId = -1,
+    userName,
+    comment,
+    userEmail = '未留下邮箱',
+  }) {
+    const {
+        app,
+      } = this,
       op = {
         blogId,
         userName,
         comment,
         userEmail,
         parentId,
-      };
-    const { dataValues } = app.model.Comment.create(op);
+      },
+      { dataValues } = await app.model.Comment.create(op);
     return dataValues;
   }
   /**
-   * 条件查询数据
+   * 查询所有数据
    * @param {obj} param0 查询条件
    * { limit, offset, blogId = -1 }
    */
-  async findCmt({ limit, offset, blogId = -1 }) {
+  async findCmtAll({
+    limit = 10,
+    offset = 0,
+  }) {
     const op = {
         limit,
         offset,
+        order: [[ 'id', 'DESC' ]],
       },
-      { app } = this;
-    if (blogId !== -1) {
-      op.where = {
-        blogId: +blogId,
-      };
-    }
-    const { dataValues } = app.model.Comment.findAndCountAll(op);
-    return dataValues;
+      { app } = this,
+      req = await app.model.Comment.findAndCountAll(op);
+    return req;
   }
 };

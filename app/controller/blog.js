@@ -32,6 +32,10 @@ module.exports = class extends Controller {
       { id } = ctx.params,
       op = { id: parseInt(id) },
       res = await ctx.service.blog.findBlogByPK(op);
+    const [ ...cmtList ] = res.comments;
+    const cmt = [];
+    cmtList.map(it => cmt.push(it.dataValues));
+    res.comments = cmt;
     console.log(res);
   }
   /**
@@ -46,9 +50,22 @@ module.exports = class extends Controller {
       content: { type: 'string', require: 'true' },
       tag: { type: 'string', require: 'true' },
     });
-    const op = ctx.request.body;
-    const req = await ctx.service.blog.addBlog(op);
-    console.log(req);
+    let op = ctx.request.body;
+    const { id: blogId, tag } = await ctx.service.blog.addBlog(op);
+    const tagArr = tag.split(',').map(it => it.trim());
+    const tagIdArr = [];
+    for (const item of tagArr) {
+      op = {
+        tag: item,
+      };
+      const [{ dataValues }] = await ctx.service.tag.addTag(op);
+      tagIdArr.push(dataValues.id);
+    }
+    op = {
+      tagIdArr,
+      blogId,
+    };
+    await ctx.service.mapping.addMapping(op);
   }
   /**
    * GET /b/new

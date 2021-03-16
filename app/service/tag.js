@@ -11,27 +11,38 @@ module.exports = class extends Service {
   async addTag({ tag }) {
     const { app } = this,
       op = {
-        tag,
+        where: { tag },
       };
-    const { dataValues } = app.model.Tag.findOrCreate(op);
-    return dataValues;
+    const req = app.model.Tag.findOrCreate(op);
+    return req;
   }
   /**
-   * 查询数据
+   * 查询所有数据
    * @param {obj} param0 查询数据
    */
-  async findTag({ tagId }) {
-    const op = {},
-      { app } = this;
-    if (tagId) {
-      op.where = {
-        id: +tagId,
-      };
-      op.include = {
-        model: app.model.Blog,
-      };
-    }
-    const { dataValues } = app.model.Tag.findAndCountAll(op);
+  async findTagAll({ limit = 10, offset = 0 }) {
+    const { app } = this,
+      op = {
+        limit,
+        offset,
+      },
+      req = await app.model.Tag.findAndCountAll(op);
+    return req;
+  }
+  /**
+   * id查询
+   * @param {obj} param0 配置
+   */
+  async findTagById({ id }) {
+    const { app } = this,
+      op = {
+        where: { id },
+        include: {
+          model: app.model.Blog,
+        },
+        order: [[ 'blogs', 'id', 'DESC' ]],
+      },
+      [{ dataValues }] = await app.model.Tag.findAll(op);
     return dataValues;
   }
 };
