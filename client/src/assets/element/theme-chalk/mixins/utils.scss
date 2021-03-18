@@ -1,0 +1,14 @@
+// 常用工具
+@mixin utils-clearfix {
+    @at-root {
+        &::after,
+        &::before {
+            display: block;
+            content: '';
+        }
+        &::after {
+            clear: both;
+        }
+    }
+}
+

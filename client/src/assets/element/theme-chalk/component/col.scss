@@ -1,0 +1,39 @@
+/* 
+j-col
+j-col-[]
+j-col-[push/pull/offset]-[]
+j-col-[xs...]-[]
+j-col-[xs...]-[push/pull/offset]-[]
+*/
+@import "../mixins/mixins";
+@import "../mixins/utils";
+
+@include b(col){
+    float:left;
+    box-sizing:border-box;
+    @include utils-clearfix
+}
+
+@for $num from 0 through 24 {
+    $code: $num/24*100%;
+    .j-col-#{$num} {
+        width: $code;
+    }
+    .j-col-offset-#{$num} {
+        margin-left: $code;
+    }
+    .j-col-push-#{$num} {
+        position:relative;
+        left: $code;
+    }
+    .j-col-pull-#{$num} {
+        position:relative;
+        right:$code;
+    }
+}
+
+@include bp(xs);
+@include bp(sm);
+@include bp(md);
+@include bp(lg);
+@include bp(xl);

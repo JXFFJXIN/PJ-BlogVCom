@@ -1,0 +1,65 @@
+@import "./config";
+@import "./var";
+// .j-block
+@mixin b($block){
+    // 声明区域
+    $B:$-cg-namespace + '-' + $block;
+    // 构建区域
+    .#{$B}{
+        @content;
+    }
+}
+// &--modifier
+@mixin m($modifier){
+    $currentSelector: "";
+
+    @each $unit in $modifier {
+        $currentSelector: $currentSelector + & + $-cg-modifier + $unit + ',';
+    }
+
+    @at-root {
+        #{$currentSelector}{
+            @content;
+        }
+    }
+}
+// $.is-
+@mixin when($state){
+    @at-root {
+        &.#{$-cg-state + $state}{
+            @content;
+        }
+    }
+}
+// 响应式布局
+@mixin bp($key, $map:$breakpoints){
+    @if map-has-key($map, $key){
+        @media only screen and #{inspect(map-get($map,$key))}{
+            .j-col-#{$key}-0 {
+                display:none;
+            }
+
+            @for $i from 0 through 24 {
+                $code:$i/24*100%;
+                .j-col-#{$key}-#{$i} {
+                    width: $code;
+                }
+                .j-col-#{$key}-offset-#{$i} {
+                    margin-left: $code;
+                }
+                .j-col-#{$key}-push-#{$i} {
+                    position: relative;
+                    left: $code;
+                }
+                .j-col-#{$key}-pull-#{$i} {
+                    position: relative;
+                    right: $code;
+                }
+            }
+        }
+    }
+    @else {
+        @warn "undefined points:`#{$key}`"
+    }
+};
+

@@ -11,7 +11,9 @@
     "egg-scripts": "^2.11.0",
     "egg-sequelize": "^6.0.0",
     "egg-validate": "^2.0.2",
-    "mysql2": "^2.2.5"
+    "egg-view-ejs": "^2.0.1",
+    "mysql2": "^2.2.5",
+    "sass-loader": "^11.0.1"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -27,9 +29,11 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-pjvegg",
-    "stop": "egg-scripts stop --title=egg-server-pjvegg",
+    "build": "cd client && npm run build",
+    "start": "egg-scripts --port=5001 start --title=pjvegg",
+    "stop": "egg-scripts stop --title=pjvegg",
     "dev": "egg-bin dev",
+    "serve": "cd client && npm run serve",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",

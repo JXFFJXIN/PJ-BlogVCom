@@ -15,4 +15,10 @@ module.exports = {
     enable: true,
     package: 'egg-validate',
   },
+
+  ejs: {
+    enable: true,
+    package: 'egg-view-ejs',
+  },
+
 };

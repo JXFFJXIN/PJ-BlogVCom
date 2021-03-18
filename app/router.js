@@ -15,6 +15,7 @@ module.exports = app => {
   router.resources('tags', '/tag', controller.tag);
   router.get('/test/:id', controller.test.get);
   router.post('/test/', controller.test.post);
+  router.all('*', controller.home.index);
   // 中间件
   // 1. app.jsonp() 提供的JSONP安全中间件
 };

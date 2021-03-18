@@ -1,0 +1,42 @@
+/* 
+j-row
+j-row--flex
+is-justify-{}
+is-align-{}
+*/
+@import "../mixins/mixins";
+@import "../mixins/utils";
+
+@include b(row) {
+    box-sizing: border-box;
+    @include utils-clearfix;
+    @include m(flex){
+        display: flex;
+        &::after,
+        &::before {
+            display: none;
+        }
+        // is-justify-{}
+        // [start,end,center,space-around/space-between]
+        @include when(justify-end){
+            justify-content: flex-end;
+        }
+        @include when(justify-center){
+            justify-content: center;
+        }
+        @include when(justify-space-around){
+            justify-content:space-around;
+        }
+        @include when(justify-space-between){
+            justify-content:space-between;
+        }
+        // is-align-{}
+        // [top,middle,bottom]
+        @include when(align-middle){
+            align-items: center;
+        }
+        @include when(align-bottom){
+            align-item: flex-end;
+        }
+    }
+}
