@@ -11,8 +11,143 @@ $breakpoints: (
   'lg': (min-width: $lg),
   'xl': (min-width: $xl),
 );
-// 边框定义
+// 内边距定义
 $header-padding:0 20px !default;
 $footer-padding:0 20px !default;
 $main-padding:0 20px !default;
 $aside-padding:0 20px !default;
+// 定义颜色
+$color-primary:#108178 !default;
+$color-white:rgb(255, 255, 255) !default;
+$color-border:#8bafad !default;
+$color-black:#000 !default;
+$color-text:rgb(26, 30, 32) !default;
+
+$color-primary-light-1:mix($color-white,$color-primary,10%) !default;
+$color-primary-light-2:mix($color-white,$color-primary,20%) !default;
+$color-primary-light-3:mix($color-white,$color-primary,30%) !default;
+$color-primary-light-4:mix($color-white,$color-primary,40%) !default;
+$color-primary-light-5:mix($color-white,$color-primary,50%) !default;
+$color-primary-light-6:mix($color-white,$color-primary,60%) !default;
+$color-primary-light-7:mix($color-white,$color-primary,70%) !default;
+$color-primary-light-8:mix($color-white,$color-primary,80%) !default;
+$color-primary-light-9:mix($color-white,$color-primary,90%) !default;
+
+$color-success:#4ada37 !default;
+$color-success-light:mix($color-white,$color-success,60%) !default;
+$color-success-lighter:mix($color-white,$color-success,70%) !default;
+$color-success-lightest:mix($color-white,$color-success,80%) !default;
+
+$color-warning:#dac137 !default;
+$color-warning-light:mix($color-white,$color-warning,60%) !default;
+$color-warning-lighter:mix($color-white,$color-warning,70%) !default;
+$color-warning-lightest:mix($color-white,$color-warning,80%) !default;
+
+$color-danger:#d33636 !default;
+$color-danger-light:mix($color-white,$color-danger,60%) !default;
+$color-danger-lighter:mix($color-white,$color-danger,70%) !default;
+$color-danger-lightest:mix($color-white,$color-danger,80%) !default;
+
+$color-info:#bce0d5 !default;
+$color-info-light:mix($color-white,$color-info,60%) !default;
+$color-info-lighter:mix($color-white,$color-info,70%) !default;
+$color-info-lightest:mix($color-white,$color-info,80%) !default;
+
+$color-text-base:$color-text !default; 
+$color-text-light:mix($color-white,$color-text,10%) !default;
+$color-text-lighter:mix($color-white,$color-text,30%) !default;
+$color-text-lightest:mix($color-white,$color-text,50%) !default;
+
+$color-border-base:$color-border !default; 
+$color-border-light:mix($color-white,$color-border,10%) !default;
+$color-border-lighter:mix($color-white,$color-border,30%) !default;
+$color-border-lightest:mix($color-white,$color-border,50%) !default;
+
+// 定义字体
+$font-path: './fonts';
+$font-size-larger:20px !default;
+$font-size-large:18px !default;
+$font-size-medium:16px !default;
+$font-size-base:14px !default;
+$font-size-small:13px !default;
+$font-size-smaller:12px !default;
+$font-weight:500 !default;
+
+// 定义边框
+$border-width-base:2px !default;
+$border-style-base:solid !default;
+$border-color-base:$color-primary-light-5 !default;
+$border-color-light:$color-primary-light-3 !default;
+
+$border-base:$border-width-base $border-style-base $border-color-base !default;
+$border-light:$border-width-base $border-style-base $border-color-light !default;
+
+$border-radius-base:10px !default;
+$border-radius-small:5px !default;
+
+$box-shadow-base:0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.04) !default;
+$box-shadow-light:0 2px 12px 0 rgba(0,0,0,.1) !default;
+
+// 定义按钮
+$button-padding-verical:12px !default;
+$button-padding-horizontal:20px !default;
+$button-font-size:$font-size-base !default;
+$button-font-weight:$font-weight !default;
+$button-border-radius:$border-radius-base !default;
+
+$button-medium-padding-vertical: 10px !default;
+$button-medium-padding-horizontal: 20px !default;
+$button-medium-font-size: $font-size-base !default;
+$button-medium-border-radius: #{$border-radius-base - 2} !default;
+
+$button-small-padding-vertical: 9px !default;
+$button-small-padding-horizontal: 15px !default;
+$button-small-font-size: $font-size-base !default;
+$button-small-border-radius:$border-radius-small !default;
+
+$button-mini-padding-vertical: 7px !default;
+$button-mini-padding-horizontal: 15px !default;
+$button-mini-font-size: $font-size-base !default;
+$button-mini-border-radius: #{$border-radius-small - 1} !default;
+
+$button-primary-background-color:$color-primary !default;
+$button-primary-border-color:$color-primary !default;
+$button-primary-font-color:$color-white !default;
+
+$button-default-background-color: $color-white !default; // #fff
+$button-default-border-color: $border-color-base !default; // #dcdfe6
+$button-default-font-color: $color-text-light !default;
+
+$button-success-background-color:$color-success !default;
+$button-success-border-color:$color-success !default;
+$button-success-font-color:$color-white !default;
+
+$button-info-background-color:$color-info !default;
+$button-info-border-color:$color-info !default;
+$button-info-font-color:$color-white !default;
+
+$button-warning-background-color:$color-warning !default;
+$button-warning-border-color:$color-warning !default;
+$button-warning-font-color:$color-white !default;
+
+$button-danger-background-color:$color-danger !default;
+$button-danger-border-color:$color-danger !default;
+$button-danger-font-color:$color-white !default;
+
+$button-disabled-background-color:$color-white !default;
+$button-disabled-border-color:$border-color-light !default;
+$button-disabled-font-color:$color-text-lightest !default;
+
+$button-active:10% !default;
+$button-hover:20% !default;
+
+//定义文字链接
+$link-font-size:$font-size-base !default;
+$link-font-weight:$font-weight !default;
+$link-default-font-color:$color-text-light !default;
+$link-active-font-color:$color-primary !default;
+$link-primary-font-color:$color-primary !default;
+$link-success-font-color:$color-success !default;
+$link-warning-font-color:$color-warning !default;
+$link-danger-font-color:$color-danger !default;
+$link-info-font-color:$color-info !default;

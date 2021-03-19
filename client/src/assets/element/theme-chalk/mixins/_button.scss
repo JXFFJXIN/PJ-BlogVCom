@@ -1,0 +1,66 @@
+@import "./var.scss";
+
+@mixin bton-init($bacColor,$borColor,$fonColor){
+    color:$fonColor;
+    background-color:$bacColor;
+    border-color:$borColor;
+    &:hover,
+    &:focus {
+        background-color: mix($color-white,$bacColor,$button-hover);
+        border-color:mix($color-white,$borColor,$button-hover);
+        color: $fonColor;
+    }
+
+    &:active {
+        background-color:mix($color-black,$bacColor,$button-active);
+        border-color:mix($color-black,$borColor,$button-active);
+        color:$fonColor;
+    }
+
+    &.is-plain {
+        @include bton-plain($bacColor)
+    }
+
+    &.is-disabled {
+        background-color: mix($color-white, $bacColor);
+        border-color: mix($color-white, $bacColor);
+        color: $color-white;
+    }
+    
+}
+
+@mixin bton-plain($col){
+    background-color: mix($color-white,$col,90%);
+    border-color: mix($color-white,$col,60%);
+    color:$col;
+    &:hover,
+    &:focus{
+        background-color:$col;
+        border-color:$col;
+        color:$color-white;
+    }
+
+    &:active{
+        background-color: mix($color-black, $col, $button-active);
+        border-color: mix($color-black, $col, $button-active);
+        color: $color-white;
+    }
+
+    &.is-disabled {
+        background-color: mix($color-white, $col, 90%);
+        border-color: mix($color-white, $col, 80%);
+        color: mix($color-white, $col, 40%);
+    }
+}
+
+@mixin bton-size($padVertical, $padHorizontal, $fonSize, $borRadius){
+    padding: $padVertical $padHorizontal;
+    font-size: $fonSize;
+    border-radius:$borRadius;
+    &.is-round{
+        padding:$padVertical $padHorizontal;
+    }
+    &.is-circle {
+        padding:$padVertical;
+    }
+}

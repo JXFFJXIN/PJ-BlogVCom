@@ -5,6 +5,8 @@ import Header from './header';
 import Main from './main';
 import Aside from './aside';
 import Container from './container';
+import Button from './button';
+import ButtonGroup from './buttonGroup';
 
 const components = [
     Row,
@@ -14,6 +16,8 @@ const components = [
     Main,
     Aside,
     Container,
+    Button,
+    ButtonGroup,
 ]
 
 const install = (Vue) => {
@@ -31,6 +35,8 @@ export default {
     Main,
     Aside,
     Container,
+    Button,
+    ButtonGroup,
 }
 
 export {
@@ -42,4 +48,6 @@ export {
     Main,
     Aside,
     Container,
+    Button,
+    ButtonGroup,
 }

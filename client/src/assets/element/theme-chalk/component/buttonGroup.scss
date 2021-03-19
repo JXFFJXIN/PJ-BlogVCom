@@ -1,0 +1,42 @@
+@import "../mixins/mixins.scss";
+@import "../mixins/var";
+
+@include b(button-group){
+    display: inline-block;
+    .j-button{
+        margin-left: 0px;
+        &:first-of-type{
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        &:last-of-type{
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        &:not(:first-of-type):not(:last-of-type){
+            border-radius: 0;
+        }
+        &:first-of-type:last-of-type{
+            border-radius: $button-border-radius;
+            &.is-round {
+                border-radius: 20px;
+            }
+            &.is-circle {
+                border-radius: 50%;
+            }
+        }
+        &:first-of-type {
+            border-right-color:rgba($color-white,.5);
+        }
+        &:last-of-type {
+            border-left-color:rgba($color-white,.5);
+        }
+        &:not(:first-of-type):not(:last-of-type){
+            border-right-color:rgba($color-white,.5);
+            border-left-color:rgba($color-white,.5);
+        }
+        &:not(:last-of-type){
+            margin-right: -1px;
+        }
+    }
+}

@@ -1,0 +1,143 @@
+/* 
+[
+    'j-button',
+    `j-button--${size}`,
+    `j-button--${type}`,
+    plain?'is-plain':'',
+    round?'is-round':'',
+    circle?'is-circle':'',
+    loading?'is-loading':'',
+    disabled?'is-disabled':'',
+]
+*/
+@import '../mixins/mixins.scss';
+@import '../mixins/utils.scss';
+@import '../mixins/var.scss';
+@import '../mixins/_button.scss';
+
+@include b(button){
+    cursor: pointer;
+    outline: none;
+    margin:0px;
+    transition-duration: .2s;
+    line-height: 1;
+
+    border: $border-base;
+    background-color: $button-default-background-color;
+    border-color: $button-default-border-color;
+    color:$button-default-font-color;
+    font-weight:$button-font-weight;
+
+    @include bton-size($button-padding-verical,$button-padding-horizontal,$button-font-size,$button-border-radius);
+    @include utils-user-select(none);
+
+    & + & {
+        margin-left: 10px;
+    }
+
+    &:hover,
+    &:focus{
+        background-color: $color-primary-light-9;
+        border-color:$color-primary-light-7;
+        color:$color-primary;
+    }
+
+    &:active{
+        background-color: mix($color-black,$color-primary,$button-active);
+        border-color: mix($color-black,$color-primary,$button-active);
+    }
+
+    [class*='j-icon-']{
+        & + span {
+            margin-left: 5px;
+        }
+    }
+
+    @include when(plain){
+        &:hover,
+        &:focus {
+            background-color: $color-white;
+            border-color: $color-primary;
+            color: $color-primary;
+        }
+
+        &:active {
+        border-color: mix($color-black, $color-primary, 10%);
+        color: mix($color-black, $color-primary, 10%);
+        }
+    }
+
+    @include when(round){
+        border-radius:20px;
+        padding-left:23px;
+        padding-right:23px;
+    }
+
+    @include when(circle){
+        border-radius:50%;
+        padding:$button-padding-verical;
+    }
+    @include when(disabled){
+        &,
+        &:hover,
+        &:focus,
+        &.is-plain{
+            cursor:not-allowed;
+            background-color: $button-disabled-background-color;
+            border-color:$button-disabled-border-color;
+            color:$button-disabled-font-color;
+        }
+    }
+    @include m(primary) {
+      @include bton-init($button-primary-background-color, $button-primary-border-color, $button-primary-font-color);
+    }
+    @include m(success) {
+      @include bton-init($button-success-background-color, $button-success-border-color, $button-success-font-color);
+    }
+    @include m(info) {
+      @include bton-init($button-info-background-color, $button-info-border-color, $button-info-font-color);
+    }
+    @include m(warning) {
+      @include bton-init($button-warning-background-color, $button-warning-border-color, $button-warning-font-color);
+    }
+    @include m(danger) {
+      @include bton-init($button-danger-background-color, $button-danger-border-color, $button-danger-font-color);
+    }
+    @include m(text){
+        padding-left: 0;
+        padding-right: 0;
+        border-color: transparent;
+        background-color: transparent;
+        color: $color-primary;
+
+        &:hover,
+        &:focus {
+            background-color: transparent;
+            border-color: transparent;
+            color: mix($color-white, $color-primary, $button-hover);
+        }
+
+        &:active {
+            background-color: transparent;
+            border-color: transparent;
+            color: mix($color-black, $color-primary, $button-active);
+        }
+
+        &.is-disabled,
+        &.is-disabled:hover,
+        &.is-disabled:focus {
+            border-color: transparent;
+        }
+    }
+    @include m(medium) {
+      @include bton-size($button-medium-padding-vertical, $button-medium-padding-horizontal, $button-medium-font-size, $button-medium-border-radius);
+    }
+    
+    @include m(small) {
+      @include bton-size($button-small-padding-vertical, $button-small-padding-horizontal, $button-medium-font-size, $button-small-border-radius);
+    }
+    
+    @include m(mini) {
+      @include bton-size($button-mini-padding-vertical, $button-mini-padding-horizontal, $button-medium-font-size, $button-mini-border-radius);
+    }
+}
