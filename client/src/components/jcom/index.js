@@ -7,6 +7,10 @@ import Aside from './aside';
 import Container from './container';
 import Button from './button';
 import ButtonGroup from './buttonGroup';
+import Input from './input';
+import Form from './form';
+import FormItem from './form-item';
+import LabelWrap from './label-wrap';
 
 const components = [
     Row,
@@ -18,6 +22,10 @@ const components = [
     Container,
     Button,
     ButtonGroup,
+    Input,
+    Form,
+    FormItem,
+    LabelWrap,
 ]
 
 const install = (Vue) => {
@@ -37,6 +45,10 @@ export default {
     Container,
     Button,
     ButtonGroup,
+    Input,
+    Form,
+    FormItem,
+    LabelWrap,
 }
 
 export {
@@ -50,4 +62,8 @@ export {
     Container,
     Button,
     ButtonGroup,
+    Input,
+    Form,
+    FormItem,
+    LabelWrap,
 }

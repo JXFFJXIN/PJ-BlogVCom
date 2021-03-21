@@ -58,7 +58,9 @@
       <i class="j-icon-delete"></i>
       <j-button type="primary" icon="j-icon-search">搜索</j-button>
   </j-main>
-  <j-footer>Footer</j-footer>
+  <j-footer>
+    <j-form  :inline="true"></j-form>
+  </j-footer>
 </j-container>
 
 <j-container>
