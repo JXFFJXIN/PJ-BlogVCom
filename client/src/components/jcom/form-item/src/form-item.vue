@@ -105,8 +105,8 @@ export default {
         form(){
             let parent = this.$parent;
             let parentName = parent.$options.componentName;
-            while (parentName !== 'jForm'){
-                if(parentName === 'jFormItem'){
+            while (parentName !== 'j-form'){
+                if(parentName === 'j-form-item'){
                     this.isNested = true;
                 }
                 parent = parent.$parent;

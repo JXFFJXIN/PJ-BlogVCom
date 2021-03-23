@@ -8,9 +8,19 @@ import Container from './container';
 import Button from './button';
 import ButtonGroup from './buttonGroup';
 import Input from './input';
-import Form from './form';
-import FormItem from './form-item';
 import LabelWrap from './label-wrap';
+import Backtop from './backtop';
+import Icon from './icon';
+import Divider from './divider';
+import Card from './card';
+import PageHeader from './pageHeader';
+import Breadcrumb from './breadcrumb';
+import BreadcrumbItem from './breadcrumbItem';
+import Tag from './tag';
+import Timeline from './timeline';
+import TimelineItem from './timelineItem';
+import Carousel from './carousel';
+import CarouselItem from './carouselItem';
 
 const components = [
     Row,
@@ -23,9 +33,19 @@ const components = [
     Button,
     ButtonGroup,
     Input,
-    Form,
-    FormItem,
+    Carousel,
+    CarouselItem,
     LabelWrap,
+    Backtop,
+    Icon,
+    Divider,
+    Card,
+    PageHeader,
+    Breadcrumb,
+    BreadcrumbItem,
+    Tag,
+    Timeline,
+    TimelineItem,
 ]
 
 const install = (Vue) => {
@@ -46,9 +66,19 @@ export default {
     Button,
     ButtonGroup,
     Input,
-    Form,
-    FormItem,
+    Carousel,
+    CarouselItem,
     LabelWrap,
+    Backtop,
+    Icon,
+    Divider,
+    Card,
+    PageHeader,
+    Breadcrumb,
+    BreadcrumbItem,
+    Tag,
+    Timeline,
+    TimelineItem,
 }
 
 export {
@@ -63,7 +93,17 @@ export {
     Button,
     ButtonGroup,
     Input,
-    Form,
-    FormItem,
+    Carousel,
+    CarouselItem,
     LabelWrap,
+    Backtop,
+    Icon,
+    Divider,
+    Card,
+    PageHeader,
+    Breadcrumb,
+    BreadcrumbItem,
+    Tag,
+    Timeline,
+    TimelineItem,
 }

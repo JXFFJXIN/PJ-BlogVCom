@@ -1,0 +1,49 @@
+@import "../mixins/mixins.scss";
+@import "../mixins/var.scss";
+@import "../mixins/utils.scss";
+
+@include b(breadcrumb){
+    font-size: 14px;
+    line-height: 1;
+    @include utils-clearfix;
+    @include e(separator){
+        margin: 0 9px;
+        font-weight: bold;
+        color: $color-text-lightest;
+
+        &[class*=icon]{
+            margin:0 6px;
+            font-weight: normal;
+        }
+    }
+    @include e(item){
+        float:left;
+        &:last-child {
+            .j-breadcrumb__inner,
+            .j-breadcrumb__inner a {
+                &, &:hover {
+                    font-weight: normal;
+                    color:$color-text-light;
+                    cursor: text;
+                }
+            }
+            .j-breadcrumb__separator{
+                display:none;
+            }
+        }
+    }
+    @include e(inner){
+        color: $color-text-lighter;
+        &.is-link, & a {
+            font-weight: bold;
+            text-decoration:none;
+            transition:$--color-transition-base;
+            color: $color-text-base;
+
+            &:hover{
+                color: $color-primary;
+                cursor:pointer;
+            }
+        }
+    }
+}

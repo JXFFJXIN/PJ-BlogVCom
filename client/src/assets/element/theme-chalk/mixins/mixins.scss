@@ -1,4 +1,5 @@
 @import "./config";
+@import "./function";
 @import "./var";
 // .j-block
 @mixin b($block){
@@ -9,6 +10,19 @@
         @content;
     }
 }
+@mixin e($element) {
+    $currentSelector: "";
+
+    @each $unit in $element {
+        $currentSelector: $currentSelector + & + $-cg-element + $unit + ',';
+    }
+
+    @at-root {
+        #{$currentSelector}{
+            @content;
+        }
+    }
+  }
 // &--modifier
 @mixin m($modifier){
     $currentSelector: "";
@@ -62,4 +76,6 @@
         @warn "undefined points:`#{$key}`"
     }
 };
+
+
 

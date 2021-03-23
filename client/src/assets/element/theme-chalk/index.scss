@@ -1,3 +1,5 @@
+@import "./common/transition.scss";
+@import "./component/icon.scss";
 @import "./component/row.scss";
 @import "./component/col.scss";
 @import "./component/main.scss";
@@ -7,4 +9,14 @@
 @import "./component/container.scss";
 @import "./component/button.scss";
 @import "./component/buttonGroup.scss";
-@import "./component/icon.scss";
+@import "./component/backtop.scss";
+@import "./component/divider.scss";
+@import "./component/image.scss";
+@import "./component/card.scss";
+@import "./component/pageHeader.scss";
+@import "./component/breadcrumb.scss";
+@import "./component/tag.scss";
+@import "./component/timeline.scss";
+@import "./component/timelineItem.scss";
+@import "./component/carousel.scss";
+@import "./component/carouselItem.scss";

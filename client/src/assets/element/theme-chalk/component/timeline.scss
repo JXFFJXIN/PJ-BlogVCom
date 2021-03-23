@@ -1,0 +1,14 @@
+@import "../mixins/mixins";
+@import "../mixins/var.scss";
+
+@include b(timeline){
+    margin: 0;
+    font-size: $font-size-base;
+    list-style: none;
+    & .j-timeline-item:last-of-type{
+        & .j-timeline-item__tail{
+            display: none;
+        }
+    }
+
+}
