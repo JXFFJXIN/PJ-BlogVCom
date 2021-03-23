@@ -24,6 +24,9 @@ import CarouselItem from './carouselItem';
 import Radio from './radio';
 import RadioGroup from './radioGroup';
 import RadioButton from './radioButton';
+import Checkbox from './checkbox';
+import CheckboxButton from './checkboxButton';
+import CheckboxGroup from './checkboxGroup';
 
 const components = [
     Row,
@@ -52,6 +55,9 @@ const components = [
     Radio,
     RadioGroup,
     RadioButton,
+    Checkbox,
+    CheckboxButton,
+    CheckboxGroup,
 ]
 
 const install = (Vue) => {
@@ -88,6 +94,9 @@ export default {
     Radio,
     RadioGroup,
     RadioButton,
+    Checkbox,
+    CheckboxButton,
+    CheckboxGroup,
 }
 
 export {
@@ -118,4 +127,7 @@ export {
     Radio,
     RadioGroup,
     RadioButton,
+    Checkbox,
+    CheckboxButton,
+    CheckboxGroup,
 }
