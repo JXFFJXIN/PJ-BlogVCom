@@ -28,7 +28,7 @@
     color:$button-default-font-color;
     font-weight:$button-font-weight;
 
-    @include bton-size($button-padding-verical,$button-padding-horizontal,$button-font-size,$button-border-radius);
+    @include bton-size($button-padding-vertical,$button-padding-horizontal,$button-font-size,$button-border-radius);
     @include utils-user-select(none);
 
     & + & {
@@ -75,7 +75,7 @@
 
     @include when(circle){
         border-radius:50%;
-        padding:$button-padding-verical;
+        padding:$button-padding-vertical;
     }
     @include when(disabled){
         &,

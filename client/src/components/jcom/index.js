@@ -21,6 +21,9 @@ import Timeline from './timeline';
 import TimelineItem from './timelineItem';
 import Carousel from './carousel';
 import CarouselItem from './carouselItem';
+import Radio from './radio';
+import RadioGroup from './radioGroup';
+import RadioButton from './radioButton';
 
 const components = [
     Row,
@@ -46,6 +49,9 @@ const components = [
     Tag,
     Timeline,
     TimelineItem,
+    Radio,
+    RadioGroup,
+    RadioButton,
 ]
 
 const install = (Vue) => {
@@ -79,6 +85,9 @@ export default {
     Tag,
     Timeline,
     TimelineItem,
+    Radio,
+    RadioGroup,
+    RadioButton,
 }
 
 export {
@@ -106,4 +115,7 @@ export {
     Tag,
     Timeline,
     TimelineItem,
+    Radio,
+    RadioGroup,
+    RadioButton,
 }

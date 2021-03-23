@@ -63,8 +63,7 @@
         <i class="j-icon-djete"></i>
         <j-button type="primary" icon="j-icon-search">搜索</j-button>
       </j-main>
-      <j-footer>
-      </j-footer>
+      <j-footer> </j-footer>
     </j-container>
 
     <j-container>
@@ -102,7 +101,13 @@
     </j-container>
 
     <j-container>
-      <j-header>Header</j-header>
+      <j-header>
+        <j-radio-group v-model="radio">
+          <j-radio :label="3">备选项</j-radio>
+          <j-radio :label="6">备选项</j-radio>
+          <j-radio :label="9">备选项</j-radio>
+        </j-radio-group>
+      </j-header>
       <j-container>
         <j-aside width="200px">
           <j-breadcrumb separator="/">
@@ -142,42 +147,81 @@
     <j-container>
       <j-aside width="200px">
         <j-tag closable>默认标签</j-tag>
-            <j-tag size="medium" closable>中等标签</j-tag>
-            <j-tag size="small" closable>小型标签</j-tag>
-            <j-tag size="mini" closable>超小标签</j-tag>
+        <j-tag size="medium" closable>中等标签</j-tag>
+        <j-tag size="small" closable>小型标签</j-tag>
+        <j-tag size="mini" closable>超小标签</j-tag>
       </j-aside>
       <j-container>
         <j-header>Header</j-header>
-        <j-main>
-          
-        </j-main>
+        <j-main> </j-main>
       </j-container>
     </j-container>
 
     <j-container>
-      <j-aside width="400px"><div class="block" style="{display:block}">
-
-              <j-timeline :reverse="reverse">
-                <j-timeline-item
-                  v-for="(activity, index) in activities"
-                  :key="index"
-                  :timestamp="activity.timestamp">
-                  {{activity.content}}
-                </j-timeline-item>
-              </j-timeline>
-            </div></j-aside>
+      <j-aside width="400px"
+        ><div
+          class="block"
+          style="
+             {
+              display: block;
+            }
+          "
+        >
+          <j-timeline :reverse="reverse">
+            <j-timeline-item
+              v-for="(activity, index) in activities"
+              :key="index"
+              :timestamp="activity.timestamp"
+            >
+              {{ activity.content }}
+            </j-timeline-item>
+          </j-timeline>
+        </div></j-aside
+      >
       <j-container>
-        <j-header>Header</j-header>
-        <j-main>
-        </j-main>
+        <j-header>
+          <div>
+            <j-radio-group v-model="radio1">
+              <j-radio-button label="上海"></j-radio-button>
+              <j-radio-button label="北京"></j-radio-button>
+              <j-radio-button label="广州"></j-radio-button>
+              <j-radio-button label="深圳"></j-radio-button>
+            </j-radio-group>
+          </div>
+          <div style="margin-top: 20px">
+            <j-radio-group v-model="radio2" size="medium">
+              <j-radio-button label="上海"></j-radio-button>
+              <j-radio-button label="北京"></j-radio-button>
+              <j-radio-button label="广州"></j-radio-button>
+              <j-radio-button label="深圳"></j-radio-button>
+            </j-radio-group>
+          </div>
+          <div style="margin-top: 20px">
+            <j-radio-group v-model="radio3" size="small">
+              <j-radio-button label="上海"></j-radio-button>
+              <j-radio-button label="北京" disabled></j-radio-button>
+              <j-radio-button label="广州"></j-radio-button>
+              <j-radio-button label="深圳"></j-radio-button>
+            </j-radio-group>
+          </div>
+          <div style="margin-top: 20px">
+            <j-radio-group v-model="radio4" disabled size="mini">
+              <j-radio-button label="上海"></j-radio-button>
+              <j-radio-button label="北京"></j-radio-button>
+              <j-radio-button label="广州"></j-radio-button>
+              <j-radio-button label="深圳"></j-radio-button>
+            </j-radio-group>
+          </div>
+        </j-header>
+        <j-main> </j-main>
         <j-footer>Footer</j-footer>
       </j-container>
     </j-container>
     <j-carousel :interval="4000" type="card" height="200px">
-    <j-carousel-item v-for="item in 6" :key="item">
-      <h3 class="medium">{{ item }}</h3>
-    </j-carousel-item>
-  </j-carousel>
+      <j-carousel-item v-for="item in 6" :key="item">
+        <h3 class="medium">{{ item }}</h3>
+      </j-carousel-item>
+    </j-carousel>
   </div>
 </template>
 
@@ -185,6 +229,11 @@
 export default {
   data() {
     return {
+      radio1: "上海",
+      radio2: "上海",
+      radio3: "上海",
+      radio4: "上海",
+      radio: 3,
       tags: [
         { name: "标签一", type: "" },
         { name: "标签二", type: "success" },
@@ -193,16 +242,20 @@ export default {
         { name: "标签五", type: "danger" },
       ],
       reverse: true,
-      activities: [{
-        content: '活动按期开始',
-        timestamp: '2018-04-15'
-      }, {
-        content: '通过审核',
-        timestamp: '2018-04-13'
-      }, {
-        content: '创建成功',
-        timestamp: '2018-04-11'
-      }]
+      activities: [
+        {
+          content: "活动按期开始",
+          timestamp: "2018-04-15",
+        },
+        {
+          content: "通过审核",
+          timestamp: "2018-04-13",
+        },
+        {
+          content: "创建成功",
+          timestamp: "2018-04-11",
+        },
+      ],
     };
   },
   methods: {
@@ -249,19 +302,19 @@ body > .j-container {
   line-height: 320px;
 }
 .j-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 200px;
-    margin: 0;
-  }
-  
-  .j-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-  
-  .j-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+
+.j-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.j-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
 </style>
 
