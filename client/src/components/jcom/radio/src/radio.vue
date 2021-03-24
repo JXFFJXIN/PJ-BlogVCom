@@ -76,7 +76,7 @@ export default {
   },
   computed: {
     isGroup() {
-      let { $parent: parent } = this;
+      let parent = this.$parent;
       while (parent) {
         if (parent.$options.componentName !== "j-radio-group") {
           parent = parent.$parent;

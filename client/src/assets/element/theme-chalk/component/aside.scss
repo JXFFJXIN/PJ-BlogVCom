@@ -5,4 +5,5 @@
     box-sizing:border-box;
     overflow: hidden;
     padding:$aside-padding;
+    flex-shrink: 0;
 }

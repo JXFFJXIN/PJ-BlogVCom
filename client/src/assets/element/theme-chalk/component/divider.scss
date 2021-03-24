@@ -3,7 +3,7 @@
 // [data.staticClass, 'j-divider', `j-divider--${props.direction}`]
 // ['j-divider__text',`is-${props.contentPosition}`]
 @include b(divider){
-    background-color:$border-color-base;
+    background-color:rgb(110, 125, 167);
     position: relative;
     @include m(horizontal){
         display: block;

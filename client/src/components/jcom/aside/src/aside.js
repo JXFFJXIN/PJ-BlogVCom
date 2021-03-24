@@ -6,7 +6,7 @@ export default {
             default:'div',
         },
         width:{
-            type:String,
+            type: Number,
             default:300,
         },
     },

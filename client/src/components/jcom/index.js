@@ -7,7 +7,6 @@ import Aside from './aside';
 import Container from './container';
 import Button from './button';
 import ButtonGroup from './buttonGroup';
-import Input from './input';
 import LabelWrap from './label-wrap';
 import Backtop from './backtop';
 import Icon from './icon';
@@ -21,12 +20,7 @@ import Timeline from './timeline';
 import TimelineItem from './timelineItem';
 import Carousel from './carousel';
 import CarouselItem from './carouselItem';
-import Radio from './radio';
-import RadioGroup from './radioGroup';
-import RadioButton from './radioButton';
-import Checkbox from './checkbox';
-import CheckboxButton from './checkboxButton';
-import CheckboxGroup from './checkboxGroup';
+
 
 const components = [
     Row,
@@ -38,7 +32,6 @@ const components = [
     Container,
     Button,
     ButtonGroup,
-    Input,
     Carousel,
     CarouselItem,
     LabelWrap,
@@ -52,12 +45,7 @@ const components = [
     Tag,
     Timeline,
     TimelineItem,
-    Radio,
-    RadioGroup,
-    RadioButton,
-    Checkbox,
-    CheckboxButton,
-    CheckboxGroup,
+
 ]
 
 const install = (Vue) => {
@@ -77,7 +65,6 @@ export default {
     Container,
     Button,
     ButtonGroup,
-    Input,
     Carousel,
     CarouselItem,
     LabelWrap,
@@ -91,12 +78,7 @@ export default {
     Tag,
     Timeline,
     TimelineItem,
-    Radio,
-    RadioGroup,
-    RadioButton,
-    Checkbox,
-    CheckboxButton,
-    CheckboxGroup,
+
 }
 
 export {
@@ -110,7 +92,6 @@ export {
     Container,
     Button,
     ButtonGroup,
-    Input,
     Carousel,
     CarouselItem,
     LabelWrap,
@@ -124,10 +105,5 @@ export {
     Tag,
     Timeline,
     TimelineItem,
-    Radio,
-    RadioGroup,
-    RadioButton,
-    Checkbox,
-    CheckboxButton,
-    CheckboxGroup,
+
 }
