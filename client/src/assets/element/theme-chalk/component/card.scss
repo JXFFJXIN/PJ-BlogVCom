@@ -2,9 +2,10 @@
 @import "../mixins/var.scss";
 
 @include b(card){
-    border-radius:$border-radius-base;
+    border-radius:$border-radius-small;
     border:$border-base;
-    background-color:$color-white;
+    box-sizing: border-box;
+    background-color:$color-primary-light-8;
     overflow: hidden;
     color: $color-text-base;
     transition: .4s;
@@ -19,12 +20,13 @@
     }
 
     @include e(header){
-        padding: #{$card-padding - 2 $card-padding};
-        border-bottom: $border-base;
+        padding: 5px;
+        background: $color-primary-light-5;
         box-sizing: border-box;
     }
 
     @include e(body){
-        padding: $card-padding;
+        padding: 5px;
+        box-sizing: border-box;
     }
 }

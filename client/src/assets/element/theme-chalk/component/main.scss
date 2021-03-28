@@ -3,9 +3,7 @@
 
 @include b(main) {
     box-sizing: border-box;
-    overflow: hidden;
     display: block;
     flex: 1;
     flex-basis: auto;
-    padding: $main-padding;
 }

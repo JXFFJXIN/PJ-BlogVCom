@@ -4,6 +4,5 @@
 @include b(header){
     box-sizing:border-box;
     overflow: hidden;
-    padding:$header-padding;
     flex-shrink: 0;
 }

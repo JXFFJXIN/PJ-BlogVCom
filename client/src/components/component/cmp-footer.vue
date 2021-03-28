@@ -1,14 +1,18 @@
 <template>
-  <div>
+  <div class="footer-wrapper">
     <ul>
       <li v-for="(n, i) in list" :key="i">
-        <span>{{ n.text }}</span>
+        <a :href="n.link">{{ n.text }}</a>
         <j-divider direction="vertical" v-if="n.show"></j-divider>
       </li>
     </ul>
     <p>个人博客，仅供非商业用途使用</p>
-    <p>JXINJXFF   <a href="https://github.com/JXFFJXIN">GitHub <j-icon class="j-icon-collection-tag
-"></j-icon></a></p>
+    <p>
+      JXINJXFF
+      <a href="https://github.com/JXFFJXIN"
+        >GitHub <j-icon class="j-icon-collection-tag"></j-icon
+      ></a>
+    </p>
   </div>
 </template>
 
@@ -19,40 +23,49 @@ export default {
     return {
       list: [
         {
-            text:"Vue",
-            show:true
+          text: "Vue",
+          link: "https://cn.vuejs.org/",
+          show: true,
         },
         {
-            text:"React",
-            show:true
+          text: "React",
+          link: "https://react.docschina.org/",
+          show: true,
         },
         {
-            text:"JavaScript",
-            show:true
+          text: "JavaScript",
+          link: "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript",
+          show: true,
         },
         {
-            text:"TypeScript",
-            show:true
+          text: "TypeScript",
+          link: "https://www.typescriptlang.org/",
+          show: true,
         },
         {
-            text:"ES6",
-            show:true
+          text: "ES6",
+          link: "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript",
+          show: true,
         },
         {
-            text:"Boostrop",
-            show:true
+          text: "Bootstrop",
+          link: "https://www.bootcss.com/",
+          show: true,
         },
         {
-            text:"JQuery",
-            show:true
+          text: "JQuery",
+          link: "https://www.w3school.com.cn/jquery/jquery_reference.asp",
+          show: true,
         },
         {
-            text:"Egg",
-            show:true
+          text: "Egg",
+          link: "https://eggjs.org/zh-cn/intro/quickstart.html",
+          show: true,
         },
         {
-            text:"Node",
-            show:false
+          text: "Node",
+          link: "http://nodejs.cn/",
+          show: false,
         },
       ],
     };
@@ -65,22 +78,28 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-div {
-  margin: 10px;
+<style lang="scss" >
+@import "./var";
+.footer-wrapper {
+  padding: 10px;
+  background-color: $color-primary-light-6;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: $color-text;
+  line-height: 30px;
   ul {
-    margin: 10px;
     li {
       display: inline-block;
       font-size: 14px;
     }
   }
-  p{
-      font-size: 14px;
-      margin: 10px;
-    a{
-        list-style: none;
-        text-decoration: none;
+  p {
+    font-size: 14px;
+    margin: 10px;
+    a {
+      list-style: none;
+      text-decoration: none;
     }
   }
 }

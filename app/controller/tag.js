@@ -18,7 +18,14 @@ module.exports = class extends Controller {
       { rows, count } = await ctx.service.tag.findTagAll(op),
       tagList = [];
     rows.map(({ dataValues }) => tagList.push(dataValues));
-    console.log(tagList, count);
+    ctx.body = {
+      success: true,
+      data: {
+        count,
+        data: tagList,
+      },
+    };
+    ctx.status = 201;
   }
   /**
    * GET /tag/:id
@@ -32,6 +39,10 @@ module.exports = class extends Controller {
         id: parseInt(id),
       },
       req = await ctx.service.tag.findTagById(op);
-    console.log(req);
+    ctx.body = {
+      success: true,
+      data: req,
+    };
+    ctx.status = 201;
   }
 };

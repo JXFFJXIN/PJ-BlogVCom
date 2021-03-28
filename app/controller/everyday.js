@@ -11,7 +11,11 @@ module.exports = class extends Controller {
   async index() {
     const { ctx } = this,
       result = await ctx.service.everyday.findED();
-    console.log(result);
+    ctx.body = {
+      success: true,
+      data: result,
+    };
+    ctx.status = 201;
   }
   /**
    * POST /ed
@@ -23,8 +27,12 @@ module.exports = class extends Controller {
       { content } = ctx.request.body,
       op = {
         content,
-      };
-    const req = await ctx.service.everyday.addED(op);
-    console.log(req);
+      },
+      req = await ctx.service.everyday.addED(op);
+    ctx.body = {
+      success: true,
+      data: req,
+    };
+    ctx.status = 201;
   }
 };

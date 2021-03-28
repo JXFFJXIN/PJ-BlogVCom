@@ -1,0 +1,45 @@
+$color-primary:#108178 !default;
+$color-white:rgb(255, 255, 255) !default;
+$color-border:#8bafad !default;
+$color-black:#000 !default;
+$color-text:rgb(26, 30, 32) !default;
+
+$color-primary-light-1:mix($color-white,$color-primary,10%) !default;
+$color-primary-light-2:mix($color-white,$color-primary,20%) !default;
+$color-primary-light-3:mix($color-white,$color-primary,30%) !default;
+$color-primary-light-4:mix($color-white,$color-primary,40%) !default;
+$color-primary-light-5:mix($color-white,$color-primary,50%) !default;
+$color-primary-light-6:mix($color-white,$color-primary,60%) !default;
+$color-primary-light-7:mix($color-white,$color-primary,70%) !default;
+$color-primary-light-8:mix($color-white,$color-primary,80%) !default;
+$color-primary-light-9:mix($color-white,$color-primary,90%) !default;
+
+$color-success:#4ada37 !default;
+$color-success-light:mix($color-white,$color-success,60%) !default;
+$color-success-lighter:mix($color-white,$color-success,70%) !default;
+$color-success-lightest:mix($color-white,$color-success,80%) !default;
+
+$color-warning:#dac137 !default;
+$color-warning-light:mix($color-white,$color-warning,60%) !default;
+$color-warning-lighter:mix($color-white,$color-warning,70%) !default;
+$color-warning-lightest:mix($color-white,$color-warning,80%) !default;
+
+$color-danger:#d33636 !default;
+$color-danger-light:mix($color-white,$color-danger,60%) !default;
+$color-danger-lighter:mix($color-white,$color-danger,70%) !default;
+$color-danger-lightest:mix($color-white,$color-danger,80%) !default;
+
+$color-info:#bce0d5 !default;
+$color-info-light:mix($color-white,$color-info,60%) !default;
+$color-info-lighter:mix($color-white,$color-info,70%) !default;
+$color-info-lightest:mix($color-white,$color-info,80%) !default;
+
+$color-text-base:$color-text !default; 
+$color-text-light:mix($color-white,$color-text,10%) !default;
+$color-text-lighter:mix($color-white,$color-text,30%) !default;
+$color-text-lightest:mix($color-white,$color-text,50%) !default;
+
+$color-border-base:$color-border !default; 
+$color-border-light:mix($color-white,$color-border,10%) !default;
+$color-border-lighter:mix($color-white,$color-border,30%) !default;
+$color-border-lightest:mix($color-white,$color-border,50%) !default;

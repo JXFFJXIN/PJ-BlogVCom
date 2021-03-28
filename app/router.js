@@ -9,12 +9,12 @@ module.exports = app => {
     controller,
   } = app;
   router.get('/', controller.home.index);
-  router.resources('blogs', '/b', controller.blog);
-  router.resources('everydays', '/ed', controller.everyday);
-  router.resources('comments', '/cmt', controller.comment);
-  router.resources('tags', '/tag', controller.tag);
-  router.get('/test/:id', controller.test.get);
-  router.post('/test/', controller.test.post);
+  router.resources('blogs', '/api/b', controller.blog);
+  router.resources('everydays', '/api/ed', controller.everyday);
+  router.resources('comments', '/api/cmt', controller.comment);
+  router.resources('tags', '/api/tag', controller.tag);
+  router.get('/api/test/:id', controller.test.get);
+  router.post('/api/test/', controller.test.post);
   router.all('*', controller.home.index);
   // 中间件
   // 1. app.jsonp() 提供的JSONP安全中间件

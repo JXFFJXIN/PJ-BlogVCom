@@ -7,7 +7,6 @@ export default {
         },
         height: {
             type:Number,
-            default: 60,
         },
     },
     computed:{

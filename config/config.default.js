@@ -80,9 +80,10 @@ module.exports = appInfo => {
   };
   // 定义security
   // config.security = {
-  //   xframe: {
+  // xframe: {
   //     value: 'SAMEORIGIN',
-  //   },
+  // enable: false,
+  // },
   //   csrf: {
   //     headerName: 'x-csrf-token', // 自定义请求头
   //   },

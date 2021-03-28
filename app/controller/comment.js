@@ -5,7 +5,7 @@ const { Controller } = require('egg');
 module.exports = class extends Controller {
   /**
    * GET /cmt/new ? page=X & pageSize=X
-   * 获取验证码
+   * 获取标签
    * queryRandomCade
    */
   async new() {
@@ -18,7 +18,14 @@ module.exports = class extends Controller {
       { count, rows } = await ctx.service.comment.findCmtAll(op),
       cmtList = [];
     rows.map(it => cmtList.push(it.dataValues));
-    console.log(count, cmtList);
+    ctx.body = {
+      success: true,
+      data: {
+        count,
+        data: cmtList,
+      },
+    };
+    ctx.status = 201;
   }
   /**
    * POST /cmt
@@ -36,7 +43,11 @@ module.exports = class extends Controller {
         parentId: parseInt(parentId),
       },
       req = await ctx.service.comment.addCmt(op);
-    console.log(req);
+    ctx.body = {
+      success: true,
+      data: req,
+    };
+    ctx.status = 201;
   }
   // 修改博客页面
   async edit() {

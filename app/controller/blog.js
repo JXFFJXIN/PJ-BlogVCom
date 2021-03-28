@@ -19,7 +19,14 @@ module.exports = class extends Controller {
       blogList = [];
 
     rows.map(it => blogList.push(it.dataValues));
-    console.log(count, blogList);
+    ctx.body = {
+      success: true,
+      data: {
+        count,
+        data: blogList,
+      },
+    };
+    ctx.status = 201;
   }
   /**
    * GET /b/：id
@@ -36,7 +43,6 @@ module.exports = class extends Controller {
     const cmt = [];
     cmtList.map(it => cmt.push(it.dataValues));
     res.comments = cmt;
-    console.log(res);
   }
   /**
    * POST /b
@@ -66,6 +72,11 @@ module.exports = class extends Controller {
       blogId,
     };
     await ctx.service.mapping.addMapping(op);
+    ctx.body = {
+      success: true,
+      data: true,
+    };
+    ctx.status = 201;
   }
   /**
    * GET /b/new
@@ -82,7 +93,14 @@ module.exports = class extends Controller {
       blogList = [];
 
     rows.map(it => blogList.push(it.dataValues));
-    console.log(count, blogList);
+    ctx.body = {
+      success: true,
+      data: {
+        count,
+        data: blogList,
+      },
+    };
+    ctx.status = 201;
   }
   async edit() {
     // GET /b/：id/edit 获取某一篇博客的编辑界面
