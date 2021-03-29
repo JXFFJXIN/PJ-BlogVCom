@@ -1,86 +1,108 @@
 <template>
   <div>
-    <j-row >
-    <j-card class="box-card" shadow="hover" >
-    <div slot="header" class="clearfix">
-      <span style="float: left; padding: 3px 0" >标签集合</span>
-      <j-button style="float: right; padding: 3px 0" type="text"
-        >刷新</j-button
-      >
-    </div>
-    <div v-for="o in tagList" :key="o.id" class="text item">
-      {{ o.tag }}
-    </div>
-  </j-card>
-  </j-row>
-  <j-row  >
-    <j-card class="box-card" shadow="hover" >
-    <div slot="header" class="clearfix">
-      <span style="float: left; padding: 3px 0">最近热门</span>
-      <j-button style="float: right; padding: 3px 0" type="text"
-        >刷新</j-button
-      >
-    </div>
-    <div v-for="o in blogList" :key="o.id" class="text item">
-      {{ o.title }}
-    </div>
-  </j-card>
-  </j-row>
-  <j-row  >
-    <j-card class="box-card" shadow="hover" >
-    <div slot="header" class="clearfix">
-      <span style="float: left; padding: 3px 0">最新评论</span>
-      <j-button style="float: right; padding: 3px 0" type="text"
-        >刷新</j-button
-      >
-    </div>
-    <div v-for="o in commentList" :key="o.id" class="text item">
-      {{o.comment}}
-    </div>
-  </j-card>
-  </j-row>
+    <j-row>
+      <j-card class="box-card" shadow="hover">
+        <div slot="header" class="clearfix">
+          <span style="float: left; padding: 3px 0">标签集合</span>
+          <j-button style="float: right; padding: 3px 0" type="text"
+            >刷新</j-button
+          >
+        </div>
+        <router-link
+          :to="{ name: 'blogTag', params: { id: o.id } }"
+          v-for="o in tagList"
+          :key="o.id"
+          class="text item"
+        >
+          {{ o.tag }}
+        </router-link>
+      </j-card>
+    </j-row>
+    <j-row>
+      <j-card class="box-card" shadow="hover">
+        <div slot="header" class="clearfix">
+          <span style="float: left; padding: 3px 0">最近热门</span>
+          <j-button style="float: right; padding: 3px 0" type="text"
+            >刷新</j-button
+          >
+        </div>
+        <router-link
+          exact
+          :to="{ name: 'blogDetail', params: { id: o.id } }"
+          v-for="o in blogList"
+          :key="o.id"
+          class="text item"
+        >
+          <j-row>
+            <j-col :span="21">
+              <span>{{ o.title }}</span>
+            </j-col>
+            <j-col :span="3">
+              <span>{{ o.view }}</span>
+            </j-col>
+          </j-row>
+        </router-link>
+      </j-card>
+    </j-row>
+    <j-row>
+      <j-card class="box-card" shadow="hover">
+        <div slot="header" class="clearfix">
+          <span style="float: left; padding: 3px 0">最新评论</span>
+          <j-button style="float: right; padding: 3px 0" type="text"
+            >刷新</j-button
+          >
+        </div>
+        <router-link
+          :to="{ name: 'blogDetail', params: { id: o.blogId } }"
+          v-for="o in commentList"
+          :key="o.id"
+          class="text item"
+        >
+          {{ o.comment }}
+        </router-link>
+      </j-card>
+    </j-row>
   </div>
 </template>
 
 <script>
-import BlogServe from '../../server/blog';
-import TagServe from '../../server/tag';
-import CommentServe from '../../server/comment';
+import BlogServe from "../../server/blog";
+import TagServe from "../../server/tag";
+import CommentServe from "../../server/comment";
 export default {
   name: "cmp-aside",
-  data(){
+  data() {
     return {
-      tagList:[],
-      blogList:[],
-      commentList:[],
-    }
+      tagList: [],
+      blogList: [],
+      commentList: [],
+    };
   },
-  created(){
+  created() {
     const op = {
-      page:1,
-      pageSize:5,
-    }
-    BlogServe.getHot(op).then((res)=>{
-      res.data.map(it=>{
+      page: 1,
+      pageSize: 5,
+    };
+    BlogServe.getHot(op).then((res) => {
+      res.data.map((it) => {
         this.blogList.push(it);
-      })
-    })
-    TagServe.getAll(op).then((res)=>{
-      res.data.map(it=>{
+      });
+    });
+    TagServe.getAll(op).then((res) => {
+      res.data.map((it) => {
         this.tagList.push(it);
-      })
-    })
-    CommentServe.getAll(op).then((res)=>{
-      res.data.map(it=>{
+      });
+    });
+    CommentServe.getAll(op).then((res) => {
+      res.data.map((it) => {
         this.commentList.push(it);
-      })
-    })
-      console.log(this.commentList);
-      console.log(this.tagList);
-      console.log(this.blogList);
-
-  }
-}
+      });
+    });
+    console.log(this.commentList);
+    console.log(this.tagList);
+    console.log(this.blogList);
+  },
+};
 </script>
 
 <style lang="scss" >
@@ -89,6 +111,9 @@ export default {
 .text {
   font-size: 14px;
   text-align: left;
+  text-decoration: none;
+  color: $color-text;
+  display: block;
 }
 
 .item {

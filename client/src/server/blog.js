@@ -14,12 +14,8 @@ export default {
         return data;
     },
     async getById({id}){
-        const res =  await axios.get('/api/b',{
-            params:{
-                id,
-            }
-        })
-        return res;
+        const {data:{data}} =  await axios.get(`/api/b/${id}`)
+        return data;
     },
     async getHot({page,pageSize}){
         const {data:{data}} =  await axios.get('/api/b/new',{
@@ -31,16 +27,30 @@ export default {
         return data;
     },
     async getByTag({id}){
-        const res = await axios.get('/api/tag',{
-            params:{
-                id,
+        const {data:{data:{blogs}}} = await axios.get(`/api/tag/${id}`)
+        return blogs;
+    },
+    getCookie(name){
+        const arr = document.cookie.split(';');
+        const res = [];
+        arr.map(it=>{
+            const item = it.split('=');
+            if(item[0] === name){
+                res.push(item);
+            }
+        })
+        console.log(res[0][1])
+        return res[0][1];
+    },
+    async setOne(blog){
+        const res = await axios({
+            method:'post',
+            url:'/api/b',
+            data:blog,
+            headers:{
+                'x-csrf-token':this.getCookie("csrfToken")
             }
         })
         return res;
-    },
-    async setOne(blog){
-        await axios.post('/api/b',{
-            data:blog,
-        })
     },
 }

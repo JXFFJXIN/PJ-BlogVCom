@@ -8,11 +8,11 @@
       </j-col>
       <j-col :span="10">
         <ul class="menu">
-          <li><router-link :to="{ name: 'default' }">首页</router-link></li>
+          <li><router-link exact :to="{ name: 'default' }">首页</router-link></li>
           <li><router-link :to="{ name: 'blog' }">博客</router-link></li>
-          <li><router-link :to="{ name: 'map' }">地图</router-link></li>
-          <li><router-link :to="{ name: 'about' }">关于</router-link></li>
-          <li><router-link :to="{ name: 'leaveMsg' }">留言</router-link></li>
+          <li><router-link exact :to="{ name: 'about' }">关于</router-link></li>
+          <li><router-link exact :to="{ name: 'editBlog' }">写博</router-link></li>
+          <li><router-link exact :to="{ name: 'editEveryday' }">写句</router-link></li>
         </ul>
       </j-col>
       <j-col :span="5">
@@ -66,7 +66,7 @@ export default {
         width: 100%;
         color: $color-primary-light-8;
         box-sizing: border-box;
-        &.router-link-exact-active {
+        &.router-link-active {
         color: $color-primary-light-2;
         background: $color-primary-light-8;
       }

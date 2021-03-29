@@ -18,23 +18,35 @@
 <script>
 import BlogServe from "../../../server/blog";
 export default {
-  name: "cmp-blog",
+  name: "cmp-blogTag",
   data() {
     return {
       blogList: [],
     };
   },
-  created() {
-    const op = {
-      page: 1,
-      pageSize: 10,
-    };
-    BlogServe.getAll(op).then((res) => {
-      res.data.map((it) => {
-        this.blogList.push(it);
-      });
-      console.log(this.blogList);
-    });
+  computed:{
+    info() {
+      const id = +this.$route.params.id || -1,
+        page = +this.$route.query.page || 1,
+        pageSize = +this.$route.query.pageSize || 10;
+      return {
+        id,
+        page,
+        pageSize,
+      };
+    },
+  },
+  watch: {
+    $route: {
+      async handler() {
+        const op = { id: this.info.id };
+        const res = await BlogServe.getByTag(op);
+        this.blogList = res;
+        console.log(this.blogList);
+        return res;
+      },
+      immediate: true,
+    },
   },
 };
 </script>

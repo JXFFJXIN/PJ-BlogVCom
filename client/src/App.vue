@@ -5,9 +5,12 @@
       <cmp-header></cmp-header>
     </j-header>
     <j-container>
-      <j-main>
+      <j-col :span="6" v-show="show">
+      <cmp-aside></cmp-aside>
+    </j-col>
+      <j-col :span="show?18:24">
         <router-view></router-view>
-      </j-main>
+      </j-col>
     </j-container>
     <j-container>
       <j-footer
@@ -23,16 +26,32 @@
 <script>
 import cmpFooter from './components/component/cmp-footer';
 import cmpHeader from './components/component/cmp-header';
+import cmpAside from './components/component/cmp-aside';
 export default {
   components:{
     cmpFooter,
     cmpHeader,
+    cmpAside,
   },
   data() {
-    return {};
+    return {
+      show:true
+    };
+  },
+  watch:{
+    $route:{
+      handler(){
+        const info = this.$route.fullPath !== '/';
+        this.show = info;
+      },
+      immediate:true
+    }
+  },
+  computed:{
   },
   methods: {},
   created(){
+    console.log(this.info)
   }
 };
 </script>

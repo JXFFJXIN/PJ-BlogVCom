@@ -43,6 +43,11 @@ module.exports = class extends Controller {
     const cmt = [];
     cmtList.map(it => cmt.push(it.dataValues));
     res.comments = cmt;
+    ctx.body = {
+      success: true,
+      data: res,
+    };
+    ctx.status = 201;
   }
   /**
    * POST /b

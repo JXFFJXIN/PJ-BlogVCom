@@ -79,15 +79,15 @@ module.exports = appInfo => {
     maxAge: 86400000, // Session 的最大有效时间
   };
   // 定义security
-  // config.security = {
+  config.security = {
   // xframe: {
   //     value: 'SAMEORIGIN',
   // enable: false,
   // },
-  //   csrf: {
-  //     headerName: 'x-csrf-token', // 自定义请求头
-  //   },
-  // };
+    csrf: {
+      headerName: 'x-csrf-token', // 自定义请求头
+    },
+  };
 
   return {
     ...config,
