@@ -50,9 +50,6 @@ export default {
   computed:{
   },
   methods: {},
-  created(){
-    console.log(this.info)
-  }
 };
 </script>
 
