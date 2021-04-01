@@ -10,7 +10,6 @@
         <ul class="menu">
           <li><router-link exact :to="{ name: 'default' }">首页</router-link></li>
           <li><router-link :to="{ name: 'blog' }">博客</router-link></li>
-          <li><router-link exact :to="{ name: 'about' }">关于</router-link></li>
           <li><router-link exact :to="{ name: 'editBlog' }">写博</router-link></li>
           <li><router-link exact :to="{ name: 'editEveryday' }">写句</router-link></li>
         </ul>

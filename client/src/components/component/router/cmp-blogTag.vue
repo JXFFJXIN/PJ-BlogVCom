@@ -5,7 +5,7 @@
           <router-link exact :to="{name:'blogDetail',params:{id:o.id}}" class="blog-title">{{ o.title }}</router-link>
         </div>
         <div class="default">
-          <div class="blog-body">{{ o.content }}</div>
+          <div class="blog-body" v-html="o.content"></div>
           <j-row class="util">
             <j-col :span="20" class="blog-tag">Tag：{{ o.tag }}</j-col>
             <j-col :span="4" class="blog-view">View:{{ o.view }}</j-col>

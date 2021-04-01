@@ -11,7 +11,9 @@
     <div id="demo1"></div>
     <h3>内容预览</h3>
     <textarea name="" id="" cols="100" rows="20" readonly v-model="blogData.content"></textarea>
-    <button type="button" class="btn" @click="getEditorData">获取当前内容</button>
+    <j-row>
+      <j-button  class="btn" @click.native="getEditorData">提交博客</j-button>
+    </j-row>
   </div>
 </template>
 

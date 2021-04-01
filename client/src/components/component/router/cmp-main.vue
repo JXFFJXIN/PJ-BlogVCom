@@ -13,7 +13,7 @@
         <span>左下</span>
       </j-col>
       <j-col :span="8" class="center-bottom">
-        <span>{{ed[0]}}</span>
+        <span v-html="ed[0]"></span>
       </j-col>
     </j-row>
   </div>

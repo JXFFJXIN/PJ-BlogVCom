@@ -10,7 +10,7 @@
           <j-col :span="4" class="blog-view">View:{{ data.view }}</j-col>
         </j-row>
         <j-row>
-          <div class="blog-body">{{ data.content }}</div>
+          <div class="blog-body" v-html="data.content"></div>
         </j-row>
       </div>
     </j-card>
@@ -23,7 +23,7 @@
           <j-col :span="4" class="blog-view">{{ time(o.createdAt) }}</j-col>
         </j-row>
         <j-row>
-          <div class="blog-body">{{ o.comment }}</div>
+          <div class="blog-body" v-html="o.comment"></div>
         </j-row>
       </div>
     </j-card>
