@@ -10,7 +10,8 @@
     </j-row>
     <j-row>
       <j-col :span="16" class="left-bottom">
-        <span>左下</span>
+        <span>
+        </span>
       </j-col>
       <j-col :span="8" class="center-bottom">
         <span v-html="ed[0]"></span>

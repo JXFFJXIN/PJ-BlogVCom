@@ -4,7 +4,7 @@
       <j-card class="box-card" shadow="hover">
         <div slot="header" class="clearfix">
           <span style="float: left; padding: 3px 0">标签集合</span>
-          <j-button style="float: right; padding: 3px 0" type="text"
+          <j-button @click="reload" style="float: right; padding: 3px 0" type="text"
             >刷新</j-button
           >
         </div>
@@ -22,7 +22,7 @@
       <j-card class="box-card" shadow="hover">
         <div slot="header" class="clearfix">
           <span style="float: left; padding: 3px 0">最近热门</span>
-          <j-button style="float: right; padding: 3px 0" type="text"
+          <j-button @click="reload" style="float: right; padding: 3px 0" type="text"
             >刷新</j-button
           >
         </div>
@@ -48,7 +48,7 @@
       <j-card class="box-card" shadow="hover">
         <div slot="header" class="clearfix">
           <span style="float: left; padding: 3px 0">最新评论</span>
-          <j-button style="float: right; padding: 3px 0" type="text"
+          <j-button @click="reload" style="float: right; padding: 3px 0" type="text"
             >刷新</j-button
           >
         </div>
@@ -57,8 +57,8 @@
           v-for="o in commentList"
           :key="o.id"
           class="text item"
+          v-html="o.comment"
         >
-          {{ o.comment }}
         </router-link>
       </j-card>
     </j-row>
@@ -71,6 +71,7 @@ import TagServe from "../../server/tag";
 import CommentServe from "../../server/comment";
 export default {
   name: "cmp-aside",
+  inject:['reload'],
   data() {
     return {
       tagList: [],

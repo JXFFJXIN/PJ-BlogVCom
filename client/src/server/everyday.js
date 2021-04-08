@@ -14,7 +14,6 @@ export default {
                 res.push(item);
             }
         })
-        console.log(res[0][1])
         return res[0][1];
     },
     async setOne(blog){

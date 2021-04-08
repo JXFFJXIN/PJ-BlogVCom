@@ -20,6 +20,7 @@ import Timeline from './timeline';
 import TimelineItem from './timelineItem';
 import Carousel from './carousel';
 import CarouselItem from './carouselItem';
+import Pagination from './pagination';
 
 
 const components = [
@@ -45,7 +46,7 @@ const components = [
     Tag,
     Timeline,
     TimelineItem,
-
+    Pagination
 ]
 
 const install = (Vue) => {
@@ -78,7 +79,7 @@ export default {
     Tag,
     Timeline,
     TimelineItem,
-
+    Pagination
 }
 
 export {
@@ -105,5 +106,5 @@ export {
     Tag,
     Timeline,
     TimelineItem,
-
+    Pagination
 }

@@ -33,7 +33,6 @@ export default {
       res.data.map((it) => {
         this.blogList.push(it);
       });
-      console.log(this.blogList);
     });
   },
 };

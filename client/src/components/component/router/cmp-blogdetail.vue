@@ -17,10 +17,11 @@
     <j-card class="box-card" v-for="o in data.comments" :key="o.id">
       <div class="default">
         <j-row class="util">
-          <j-col :span="20" class="blog-tag"
+          <j-col :span="16" class="blog-tag"
             >{{ o.userName }}{{ find(o.parentId).userName }}</j-col
           >
           <j-col :span="4" class="blog-view">{{ time(o.createdAt) }}</j-col>
+          <j-col :span="4" class="blog-replace"><span @click="parentId = o.id">[回复]</span></j-col>
         </j-row>
         <j-row>
           <div class="blog-body" v-html="o.comment"></div>
@@ -29,6 +30,9 @@
     </j-card>
     <j-card class="box-card">
       <j-row class="comment-info">
+        <j-col :span="8">
+            {{parentId?`回复@${parentUserName}`:"创建评论"}}
+        </j-col>
         <j-col :span="8">
           <input
             type="text"
@@ -45,20 +49,12 @@
             v-model="userEmail"
           />
         </j-col>
-        <j-col :span="8">
-          <input
-            type="text"
-            placeholder="邮箱"
-            id="userEmail"
-            v-model="userEmail"
-          />
-        </j-col>
       </j-row>
       <j-row class="comment-body">
         <div id="demo1"></div>
       </j-row>
       <j-row class="comment-button">
-        <j-button @click="getEditorData">提交</j-button>
+        <j-button @click.native="getEditorData">提交</j-button>
       </j-row>
     </j-card>
   </div>
@@ -70,6 +66,7 @@ import BlogServer from "../../../server/blog";
 import wangEditor from "wangeditor";
 export default {
   name: "cmp-blogdetail",
+  inject:['reload'],
   data() {
     return {
       data: {},
@@ -78,6 +75,7 @@ export default {
       userName: "",
       userEmail: "",
       parentId: null,
+      id:0
     };
   },
   computed: {
@@ -108,6 +106,12 @@ export default {
         parentId,
       };
     },
+    parentUserName(){
+      const [data = ""] =
+        this.data.comments &&
+        this.data.comments.filter((it) => it.id === this.parentId);
+      return data.userName;
+    }
   },
   watch: {
     $route: {
@@ -115,7 +119,6 @@ export default {
         const op = { id: this.info.id };
         const res = await BlogServer.getById(op);
         this.data = res;
-        console.log(this.data);
         return res;
       },
       immediate: true,
@@ -134,13 +137,13 @@ export default {
         show: data ? true : false,
         userName: data ? ` 回复 ${data.userName}` : "",
       };
-      console.log(res);
       return res;
     },
+    
     async getEditorData() {
       // 通过代码获取编辑器内容
-      console.log(this.commentData);
       await CommentServer.setOne(this.commentData);
+      this.reload()
     },
   },
   mounted() {
@@ -188,6 +191,16 @@ export default {
         font-size: 12px;
         border-bottom: 1px solid $color-primary-light-6;
         padding: 5px;
+        .blog-replace{
+          cursor: pointer;
+          color: $color-primary-light-1;
+        }
+        .blog-tag{
+          color: $color-primary-light-1;
+        }
+        .blog-view{
+          color: $color-primary-light-1;
+        }
       }
       .box-card {
         box-sizing: border-box;

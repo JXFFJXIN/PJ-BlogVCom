@@ -1,24 +1,18 @@
 <template>
   <div class="container">
     <j-row justify="space-around">
-      <j-col :span="5">
+      <j-col :span="7">
         <router-link :to="{ name: 'default' }" class="title"
           >个人博客 | 前端技术博客</router-link
         >
       </j-col>
-      <j-col :span="10">
+      <j-col :span="17">
         <ul class="menu">
           <li><router-link exact :to="{ name: 'default' }">首页</router-link></li>
           <li><router-link :to="{ name: 'blog' }">博客</router-link></li>
           <li><router-link exact :to="{ name: 'editBlog' }">写博</router-link></li>
           <li><router-link exact :to="{ name: 'editEveryday' }">写句</router-link></li>
         </ul>
-      </j-col>
-      <j-col :span="5">
-        <div class="search">
-          <input type="text" placeholder="请输入关键词!" />
-          <j-button type="primary" plain size="mini">搜索</j-button>
-        </div>
       </j-col>
     </j-row>
   </div>
